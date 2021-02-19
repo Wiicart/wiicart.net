@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <link rel='icon' href='https://www.wiicart.net/img/backman.png' type='image/x-icon'/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Wiicart's personal website.">
@@ -16,14 +17,53 @@
         header, p{
           font-family: 'Cabin', sans-serif;
         }
-        p2, p3{
+        span2{
         font-family: 'Inconsolata', monospace;
+        }
+        div{
+        font-family: 'Jaldi', sans-serif;
+        }
+        #emailhover, #discordhover, #githubhover{
+        visibility: hidden;
+        font-family: 'Inconsolata', monospace;
+        position: absolute;
+        text-align: center;
+        opacity: 0;
+        transition: 0.2s;
+        }
+        #mail:hover ~ #emailhover{
+        visibility: visible;
+        opacity: 1
+        }
+        #discord:hover ~ #discordhover{
+        visibility: visible;
+        opacity: 1
+        }
+        #github:hover ~ #githubhover{
+        visibility: visible;
+        opacity: 1
+        }
+        .hr, .header{
+        position: sticky;
+        position: -webkit-sticky;
         }
     </style>
 </head>
 <center>
-    <header style="color:white; font-size: 60px; font-style: italic;">wiicart.net</header>
-    <p style="color:white; font-size: 20px;">I do stuff, this website will be changing a lot.</p>
-    <!----CONTACT---->
+    <header id="header" style="color:white; font-size: 60px; font-style: italic;">wiicart.net</header>
+    <p style="color:white; font-size: 20px; font-style: italic;">I do stuff.</p>
+    <!----Info---->
+    <div>
+        <img style="vertical-align:middle;" id="mail" alt="email" width="35" src="https://www.wiicart.net/img/email.png">
+        <img style="vertical-align:middle;" id="discord" alt="discord" width="35" src="https://www.wiicart.net/img/discord.png">
+        <img style="vertical-align:middle;" id="github" alt="github" width="35" src="https://www.wiicart.net/img/github.png">
+        <br />
+        <p id="emailhover" style="color:white; font-size: 20; top:9; left:20px; right:20px;">wiicart@pedestriamc.com</p>
+        <p id="discordhover" style="color:white; font-size: 20; top:9; left:20px; right:20px;">wiicart#0825</p>
+        <p id="githubhover" style="color:white; font-size: 20; top:9; left:20px; right:20px;">github.com/wiicart</p>
+        <br />
+        <br />
+        <hr />
+    </div>
 </center>
 </html>
