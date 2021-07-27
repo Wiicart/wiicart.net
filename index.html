@@ -13,6 +13,7 @@
         body{
           background: rgb(144,31,31);
           background: linear-gradient(90deg, rgba(144,31,31,1) 38%, rgba(106,6,6,1) 100%);
+          top: 50%;
         }
         header, p{
           font-family: 'Cabin', sans-serif;
@@ -20,7 +21,7 @@
         span2{
         font-family: 'Inconsolata', monospace;
         }
-        div{
+        .text{
         font-family: 'Jaldi', sans-serif;
         }
         #emailhover, #discordhover, #githubhover{
@@ -49,14 +50,15 @@
         }
     </style>
 </head>
+<div>
 <center>
-    <header id="header" style="color:white; font-size: 65%; font-style: italic;">wiicart</header>
-    <p style="color:white; font-size: 20px; font-style: italic;">I do stuff.</p>
+    <header id="header" style="color:white; font-size: 450%; font-style: italic;">wiicart</header>
+    <p style="color:white; font-size: 200%; font-style: italic;">I do stuff.</p>
     <!----Info---->
-    <div>
-        <img style="vertical-align:middle;" id="mail" alt="email" width="35" src="https://www.wiicart.net/img/email.png">
-        <img style="vertical-align:middle;" id="discord" alt="discord" width="35" src="https://www.wiicart.net/img/discord.png">
-        <img style="vertical-align:middle;" id="github" alt="github" width="35" src="https://www.wiicart.net/img/github.png">
+    <div id="text">
+        <img style="vertical-align:middle;" id="mail" alt="email" width="80" src="https://www.wiicart.net/img/email.png">
+        <img style="vertical-align:middle;" id="discord" alt="discord" width="120" src="https://www.wiicart.net/img/discorded.png">
+        <img style="vertical-align:middle;" id="github" alt="github" width="80" src="https://www.wiicart.net/img/github.png">
         <br />
         <p id="emailhover" style="color:white; font-size: 20; top:9; left:20px; right:20px;">wiicart@pedestriamc.com</p>
         <p id="discordhover" style="color:white; font-size: 20; top:9; left:20px; right:20px;">wiicart#0825</p>
@@ -64,4 +66,5 @@
         <br />
     </div>
 </center>
+</div>
 </html>
