@@ -47,7 +47,26 @@
                 padding: 0.2em 0.4em;
                 font-family: monospace;
                 font-size: 100%;
-        }
+            }
+            footer{
+                margin-bottom: 0%;
+                text-align: center;
+            }
+            .footerhref{
+                color: white;
+                text-decoration: none;
+            }
+            .footer{
+                margin-top: auto;
+                margin-bottom: 0%;
+                position: absolute;
+                width: 100%;
+            }
+            html, body {
+                min-height: 100%;
+                margin: 0;
+                position: relative;
+            }
         </style>
     </head>
     <body>
@@ -98,8 +117,33 @@
             <div class="card-header" style="font-size: 200%;"><strong>/nick</strong></div>
             <div class="card-body">
                 <div class="card-text"><code>/nick &lt;nickname&gt; &lt;player&gt;</code></div>
+                <br/>
+                <div class="card-text" style="font-size: 170%;">Nickname:</div>
+                <div class="card-text">With /nickname, codes for coloring and styling are entered before text.</div>
+                <div class="card-text">Because of this, nicknames may contain multiple colors and styles.</div>
+                <br/>
+                <div class="card-text">All <a href="https://www.google.com/search?sca_esv=9cd90a64e37ec4fc&sca_upv=1&q=bukkit+color+codes&udm=2&fbs=AEQNm0Dwc9VijzN-JW-4YRo_w_BUQbKUrL1mkR3HAGvFJsTEU2yTeL61j6uh8rPucZu_asD8QQkcJ2ZCfmQyRJdbMVxfKzmxNTqzIbmjrnLcj7mbGeXYDewvOywdYDifXqGDibdk_YjVUJ142oDpk_f_DWEGWc1cmhyrlsDDstAUMZrhZsS2sn2qGTEXegwxqOY97t2RJRHjw4VRolIU7S5R1J0ZJANA_g&sa=X&ved=2ahUKEwiSs46L_4aHAxUIm4kEHSoWCxgQtKgLegQIDRAB&biw=1399&bih=799&dpr=2#vhid=XQXmy3qeAOXAtM&vssid=mosaic" style="color:white;">Bukkit</a> color codes are supported.</div>
+                <div class="card-text">(!) RGB color codes are supported as well, formatted &amp;#&lt;RGB&gt;</div>
+                <div class="card-text">(!) RGB differs from /namecolor in that it requres an &amp; in front of the color.</div>
+                <br/>
+                <div class="card-text">Text styling uses the same codes as /namecolor</div>
             </div>
         </div>
+        <div class="card text-white bg-dark mb-3 mx-auto" style="max-width: 85%;">
+            <div class="card-header" style="font-size: 200%;"><strong>/whois</strong></div>
+            <div class="card-body">
+                <div class="card-text"><code>/whois &lt;display-name&gt;</code></div>
+                <br/>
+                <div class="card-text">The who is command is very simple.</div>
+                <div class="card-text">In the &lt;display-name&gt; field, just enter the name of someone in chat</div>
+                <div class="card-text">This command is not case-sensitive, and it will ignore color codes.</div>
+            </div>
+        </div>
+        <footer class="footer bg-dark">
+            <h3 style="color:white; font-size: 100%; margin-top: 1%;">NameColor by wiicart</h3>
+            <h3 style="color:white; font-size: 100%;"><a href="https://wiicart.net" class="footerhref">wiicart.net</a> | <a href="https://github.com/Wiicart" class="footerhref">GitHub</a> | <a href="https://www.spigotmc.org/members/wiicart.811724/" class="footerhref">Spigot</a></h3>
+            <h3 style="color:white; font-size: 100%;">ⓒ wiicart 2024</h3>
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
