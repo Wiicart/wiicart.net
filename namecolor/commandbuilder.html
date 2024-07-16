@@ -83,15 +83,20 @@
     <h3 class="display-4 text-white">Command Builder</h3>
     <div class="container">
         <div class="card text-white bg-dark mb-3" style="max-width: 75%;">
-            <div class="card-header">/nick</div>
+            <div class="card-header"><h4>/nick</h4></div>
             <div class="card-body">
                 <p class="card-text">Build your /nick command!</p>
+                <p class="card-text">Apply the styles and colors you want with your nickname in the first box.</p>
+                <p class="card-text">To reset the styles so you can use different ones, click on the "x" symbol.</p>
+                <p class="card-text">*The reset button will not reset your command, rather styles in-line.</p>
                 <div class="btn-toolbar" role="toolbar" aria-label="Text styles">
                     <div class="btn-group mr-2" role="group" aria-label="syling">
+                        <button type="button" id="color-button" class="btn btn-light white-icon"><i class="bi bi-brush"></i></i></button>
                         <button type="button" id="bold-button" class="btn btn-light white-icon"><i class="bi bi-type-bold h6"></i></button>
-                        <button type="button" id="italic-button" class="btn btn-light white-icon"><i class="bi bi-type-italic h6"></i></i></button>
-                        <button type="button" id="underline-button" class="btn btn-light white-icon"><i class="bi bi-type-underline h6"></i></i></button>
-                        <button type="button" id="strike-button" class="btn btn-light white-icon"><i class="bi bi-type-strikethrough h6"></i></i></button>
+                        <button type="button" id="italic-button" class="btn btn-light white-icon"><i class="bi bi-type-italic h6"></i></button>
+                        <button type="button" id="underline-button" class="btn btn-light white-icon"><i class="bi bi-type-underline h6"></i></button>
+                        <button type="button" id="strike-button" class="btn btn-light white-icon"><i class="bi bi-type-strikethrough h6"></i></button>
+                        <button type="button" id="reset-button" class="btn btn-light white-icon"><i class="bi bi-x-octagon h6"></i></button>
                     </div>
                     <div class="btn-group btn-group2 mr-2" role="group" aria-label="color picker">
                         <input type="color" class="form-control form-control-color textC" id="colorPicker" value="#CCCCCC" title="Text Color" style="border-radius: 0; background-color: transparent;">
@@ -99,12 +104,11 @@
                     </div>
                 </div>
                 <input type="text" class="form-control" id="nameInput" placeholder="Name" style="margin-bottom: 2%;">
-                <input class="form-control" type="text" placeholder="Display Name" style="margin-bottom: 2%;" readonly>
-                <input class="form-control" type="text" placeholder="Command" style="margin-bottom: 2%;" readonly>
+                <div id="formattedOutput" class="form-control" style="margin-bottom: 2%;"><p style="margin-bottom: 0%;" class=".text-muted">&nbsp;</p></div> <!-- Output container -->
+                <input class="form-control" type="text" id="commandText" placeholder="&nbsp;" style="margin-bottom: 2%;" readonly>
             </div>
         </div>
     </div>
-
 
     
     <footer class="footer bg-dark">
@@ -125,27 +129,54 @@
         document.getElementById("strike-button").onclick = function() {
             strike();
         };
+        document.getElementById("reset-button").onclick = function() {
+            reset();
+        };
+        document.getElementById("color-button").onclick = function() {
+            color();
+        };
         function bold() {
             var nameInput = document.getElementById("nameInput");
             var currentValue = nameInput.value;
             nameInput.value = currentValue + "&l";
+            applyFormatting();
         }
         function italic() {
             var nameInput = document.getElementById("nameInput");
             var currentValue = nameInput.value;
             nameInput.value = currentValue + "&o";
+            applyFormatting();
         }
         function underline() {
             var nameInput = document.getElementById("nameInput");
             var currentValue = nameInput.value;
             nameInput.value = currentValue + "&n";
+            applyFormatting();
         }
         function strike() {
             var nameInput = document.getElementById("nameInput");
             var currentValue = nameInput.value;
             nameInput.value = currentValue + "&m";
+            applyFormatting();
         }
+        function reset() {
+            var nameInput = document.getElementById("nameInput");
+            var currentValue = nameInput.value;
+            nameInput.value = currentValue + "&r";
+            applyFormatting();
+        }
+        function color(){
+            var nameInput = document.getElementById("nameInput");
+            var currentValue = nameInput.value;
+            var color = "&#" + document.getElementById("colorPicker").value.substr(1);
+            nameInput.value = currentValue + color;
+            applyFormatting();
+        }
+        function applyFormatting(){
+
+        }
+
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
