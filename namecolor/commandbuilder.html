@@ -98,7 +98,7 @@
                         <!-- <button type="button" id="color-button" class="btn btn-light white-icon"><i class="bi bi-palette h6"></i></i></button> -->
                     </div>
                 </div>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" style="margin-bottom: 2%;">
+                <input type="text" class="form-control" id="nameInput" placeholder="Name" style="margin-bottom: 2%;">
                 <input class="form-control" type="text" placeholder="Display Name" style="margin-bottom: 2%;" readonly>
                 <input class="form-control" type="text" placeholder="Command" style="margin-bottom: 2%;" readonly>
             </div>
@@ -113,6 +113,38 @@
         <h3 style="color:white; font-size: 100%;">ⓒ wiicart 2024</h3>
     </footer>
     <script type="text/javascript">
+        document.getElementById("bold-button").onclick = function() {
+            bold();
+        };
+        document.getElementById("italic-button").onclick = function() {
+            italic();
+        };
+        document.getElementById("underline-button").onclick = function() {
+            underline();
+        };
+        document.getElementById("strike-button").onclick = function() {
+            strike();
+        };
+        function bold() {
+            var nameInput = document.getElementById("nameInput");
+            var currentValue = nameInput.value;
+            nameInput.value = currentValue + "&l";
+        }
+        function italic() {
+            var nameInput = document.getElementById("nameInput");
+            var currentValue = nameInput.value;
+            nameInput.value = currentValue + "&o";
+        }
+        function underline() {
+            var nameInput = document.getElementById("nameInput");
+            var currentValue = nameInput.value;
+            nameInput.value = currentValue + "&n";
+        }
+        function strike() {
+            var nameInput = document.getElementById("nameInput");
+            var currentValue = nameInput.value;
+            nameInput.value = currentValue + "&m";
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
