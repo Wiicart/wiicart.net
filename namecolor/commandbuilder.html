@@ -47,6 +47,18 @@
             margin-top: 2%;
             text-align: center;
         }
+        .btn{
+            background-color: transparent;
+        }
+        .white-icon{
+            color: white;
+        }
+        .btn-group2{
+            margin-left: 2%;
+        }
+        .btn-toolbar{
+            margin-bottom: 2%;
+        }
     </style>
 </head>
 <body>
@@ -76,22 +88,22 @@
                 <p class="card-text">Build your /nick command!</p>
                 <div class="btn-toolbar" role="toolbar" aria-label="Text styles">
                     <div class="btn-group mr-2" role="group" aria-label="syling">
-                        <button type="button" id="bold-button" class="btn btn-light"><i class="bi bi-type-bold h4"></i></button>
-                        <button type="button" id="italic-button" class="btn btn-light"><i class="bi bi-type-italic h4"></i></i></button>
-                        <button type="button" id="underline-button" class="btn btn-light"><i class="bi bi-type-underline h4"></i></i></button>
-                        <button type="button" id="strike-button" class="btn btn-light"><i class="bi bi-type-strikethrough h4"></i></i></button>
+                        <button type="button" id="bold-button" class="btn btn-light white-icon"><i class="bi bi-type-bold h6"></i></button>
+                        <button type="button" id="italic-button" class="btn btn-light white-icon"><i class="bi bi-type-italic h6"></i></i></button>
+                        <button type="button" id="underline-button" class="btn btn-light white-icon"><i class="bi bi-type-underline h6"></i></i></button>
+                        <button type="button" id="strike-button" class="btn btn-light white-icon"><i class="bi bi-type-strikethrough h6"></i></i></button>
+                    </div>
+                    <div class="btn-group btn-group2 mr-2" role="group" aria-label="color picker">
+                        <input type="color" class="form-control form-control-color textC" id="colorPicker" value="#CCCCCC" title="Text Color" style="border-radius: 0; background-color: transparent;">
+                        <!-- <button type="button" id="color-button" class="btn btn-light white-icon"><i class="bi bi-palette h6"></i></i></button> -->
                     </div>
                 </div>
-
-                <input class="form-control" type="text" placeholder="Output" readonly>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" style="margin-bottom: 2%;">
+                <input class="form-control" type="text" placeholder="Display Name" style="margin-bottom: 2%;" readonly>
+                <input class="form-control" type="text" placeholder="Command" style="margin-bottom: 2%;" readonly>
             </div>
         </div>
     </div>
-
-
-
-
-
 
 
     
@@ -100,8 +112,7 @@
         <h3 style="color:white; font-size: 100%;"><a href="https://wiicart.net" class="footerhref">wiicart.net</a> | <a href="https://github.com/Wiicart" class="footerhref">GitHub</a> | <a href="https://www.spigotmc.org/members/wiicart.811724/" class="footerhref">Spigot</a></h3>
         <h3 style="color:white; font-size: 100%;">ⓒ wiicart 2024</h3>
     </footer>
-    <script>
-
+    <script type="text/javascript">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
