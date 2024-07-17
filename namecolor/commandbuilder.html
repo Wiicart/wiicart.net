@@ -86,8 +86,8 @@
             <div class="card-header"><h4>/nick</h4></div>
             <div class="card-body">
                 <p class="card-text">Build your /nick command!</p>
-                <p class="card-text">Apply the styles and colors you want with your nickname in the first box.</p>
-                <p class="card-text">To reset the styles so you can use different ones, click on the "x" symbol.</p>
+                <p class="card-text">Click on the styles and colors that you want, then type your text.</p>
+                <p class="card-text">To make the styles that you've already added stop, click on the "x" symbol.</p>
                 <p class="card-text">*The reset button will not reset your command, rather styles in-line.</p>
                 <div class="btn-toolbar" role="toolbar" aria-label="Text styles">
                     <div class="btn-group mr-2" role="group" aria-label="syling">
@@ -99,12 +99,15 @@
                         <button type="button" id="reset-button" class="btn btn-light white-icon"><i class="bi bi-x-octagon h6"></i></button>
                     </div>
                     <div class="btn-group btn-group2 mr-2" role="group" aria-label="color picker">
-                        <input type="color" class="form-control form-control-color textC" id="colorPicker" value="#CCCCCC" title="Text Color" style="border-radius: 0; background-color: transparent;">
+                        <input type="color" class="form-control form-control-color textC" id="colorPicker" value="#FF0000" title="Text Color" style="border-radius: 0; background-color: transparent;">
                         <!-- <button type="button" id="color-button" class="btn btn-light white-icon"><i class="bi bi-palette h6"></i></i></button> -->
                     </div>
                 </div>
-                <input type="text" class="form-control" id="nameInput" placeholder="Name" style="margin-bottom: 2%;">
+                <label for="nameInput">Name Input</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Name" style="margin-bottom: 2%;" onChange="applyFormatting()">
+                <label for="formattedOutput">In game display name</label>
                 <div id="formattedOutput" class="form-control" style="margin-bottom: 2%;"><p style="margin-bottom: 0%;" class=".text-muted">&nbsp;</p></div> <!-- Output container -->
+                <label for="commandText">In game command</label>
                 <input class="form-control" type="text" id="commandText" placeholder="&nbsp;" style="margin-bottom: 2%;" readonly>
             </div>
         </div>
@@ -172,64 +175,58 @@
             nameInput.value = currentValue + color;
             applyFormatting();
         }
-        function applyFormatting() {
-    const colorCodePattern = /&#([0-9a-fA-F]{6})/g;
-    var nameInput = document.getElementById("nameInput");
-    var currentValue = nameInput.value;
-    let stringList = currentValue.split("&r");
-    let finalText = "";
-
-    for (let i = 0; i < stringList.length; i++) {
-        // Process styles
-        let style = "style='";
-        let segment = stringList[i];
-
-        if (segment.includes("&l")) {
-            segment = segment.replace(/&l/g, "");
-            style += "font-weight: bold; ";
-        }
-        if (segment.includes("&o")) {
-            segment = segment.replace(/&o/g, "");
-            style += "font-style: italic; ";
-        }
-        if (segment.includes("&n")) {
-            segment = segment.replace(/&n/g, "");
-            style += "text-decoration: underline; ";
-        }
-        if (segment.includes("&m")) {
-            segment = segment.replace(/&m/g, "");
-            if (style.includes("text-decoration:")) {
-                style = style.replace("text-decoration:", "text-decoration: line-through, ");
-            } else {
-                style += "text-decoration: line-through; ";
+        function applyFormatting(){
+            const colorCodePattern = /&#[0-9a-fA-F]{6}(?![0-9a-zA-Z])/g;
+            var nameInput = document.getElementById("nameInput");
+            var currentValue = nameInput.value;
+            let stringList = currentValue.split("&r");
+            let finalText = "";
+            for(let i=0; i<stringList.length; i++){
+                //Process styles
+                let style = "style='";
+                if(stringList[i].includes("&l")){
+                    stringList[i] = stringList[i].replace("&l", "");
+                    style += "font-weight: bold;";
+                }
+                if(stringList[i].includes("&o")){
+                    stringList[i] = stringList[i].replace("&o", "");
+                    style += "font-style: italic;";
+                }
+                if(stringList[i].includes("&n")){
+                    stringList[i] = stringList[i].replace("&n", "");
+                    style += "text-decoration: underline;";
+                }
+                if(stringList[i].includes("&m")){
+                    stringList[i] = stringList[i].replace("&m", "");
+                    if(style.includes("text-decoration:")){
+                        style.replace("text-decoration:", "text-decoration: line-through,")
+                    }else{
+                        style += "text-decoration: line-through;";
+                    }
+                }
+                style += "'>";
+                //Process colors
+                let finalRound = "";
+                let secondList = stringList[i].split(colorCodePattern)
+                for(let v=0; v<secondList.length; v++){
+                    let innerStyle = "style='";
+                    let rawText = secondList[v];
+                    if (colorCodePattern.test(secondList[v])) {
+                        let hex = secondList[v].match(colorCodePattern)[1]; // Extract the hex code
+                        innerStyle += "color: #" + hex + "; ";
+                        rawText = secondList[v].replace(colorCodePattern, "");
+                    }
+                    innerStyle += "'>";
+                    if(colorCodePattern.test(rawText)){
+                        finalRound += ""
+                    }else{
+                        finalRound += "<span " + innerStyle + rawText + "</span>";
+                    }    
+                }
+                finalText += "<span " + style + finalRound + "</span>"
             }
+            document.getElementById("formattedOutput").innerHTML = finalText + "&nbsp;";
         }
-        style += "'>";
-
-        // Process colors
-        let finalRound = "";
-        let secondList = segment.split(colorCodePattern);
-
-        for (let v = 0; v < secondList.length; v++) {
-            let innerStyle = "style='";
-            let rawText = secondList[v];
-
-            if (colorCodePattern.test(secondList[v])) {
-                let hex = secondList[v].match(colorCodePattern)[0];
-                hex = hex.replace("&#", "");
-                innerStyle += "color: #" + hex + "!important; ";
-                rawText = secondList[v].replace(colorCodePattern, "");
-            }
-
-            innerStyle += "'>";
-            finalRound += "<span " + innerStyle + ">" + rawText + "</span>";
-        }
-
-        finalText += "<span " + style + ">" + finalRound + "</span>";
-    }
-
-    document.getElementById("formattedOutput").innerHTML = finalText;
-}
 
 
     </script>
