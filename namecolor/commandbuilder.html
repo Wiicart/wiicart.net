@@ -176,7 +176,7 @@
             applyFormatting();
         }
         function applyFormatting(){
-            const colorCodePattern = /&#[0-9a-fA-F]{6}(?![0-9a-zA-Z])/g;
+            const colorCodePattern = /&#[0-9a-fA-F]{6}/g;
             var nameInput = document.getElementById("nameInput");
             var currentValue = nameInput.value;
             let stringList = currentValue.split("&r");
@@ -199,7 +199,7 @@
                 if(stringList[i].includes("&m")){
                     stringList[i] = stringList[i].replace("&m", "");
                     if(style.includes("text-decoration:")){
-                        style.replace("text-decoration:", "text-decoration: line-through,")
+                        style = style.replace("text-decoration:", "text-decoration: line-through,")
                     }else{
                         style += "text-decoration: line-through;";
                     }
@@ -207,14 +207,31 @@
                 style += "'>";
                 //Process colors
                 let finalRound = "";
-                let secondList = stringList[i].split(colorCodePattern)
-                for(let v=0; v<secondList.length; v++){
+                //let secondList = stringList[i].split(colorCodePattern)
+                let finalArray = [];
+                while(stringList[i].includes(colorCodePattern)){
+                    let elemToAdd = "";
+                    let pos1 = stringList[i].search(colorCodePattern);
+                    elemToAdd += stringList[i].substring(pos1, pos1+8);
+                    let pos2 = stringList[i].search(colorCodePattern);
+                    if(pos2 != -1){
+                        elemToAdd += stringList[i].substring(pos1+8, pos2);
+                    }else{
+                        elemToAdd += stringList[i].substring(pos1+8, stringList[i].length);
+                    }
+                    finalArray.push(elemToAdd);
+                    stringList[i] = (elemToAdd, "");
+
+                }
+                
+                for(let v=0; v<finalArray.length; v++){
                     let innerStyle = "style='";
                     let rawText = secondList[v];
-                    if (colorCodePattern.test(secondList[v])) {
+                    if (colorCodePattern.test(finalArray[v])) {
                         let hex = secondList[v].match(colorCodePattern)[1]; // Extract the hex code
+                        hex = hex.replace("&", "");
                         innerStyle += "color: #" + hex + "; ";
-                        rawText = secondList[v].replace(colorCodePattern, "");
+                        rawText = finalArray[v].replace(colorCodePattern, "");
                     }
                     innerStyle += "'>";
                     if(colorCodePattern.test(rawText)){
@@ -227,9 +244,11 @@
             }
             document.getElementById("formattedOutput").innerHTML = finalText + "&nbsp;";
         }
+        
 
 
     </script>
 </body>
 </html>
+
 
