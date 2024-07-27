@@ -22,26 +22,14 @@
         h1{
             text-align: center;
             font-family: dm-sans;
-            font-size: 300%;
+            font-size: 3rem; /* Using rem for font size */
             background-color: rgb(255, 243, 79) !important;
-            margin-top: 0%;
+            margin-top: 0;
         }
         body, h1, h2{
             padding: 0;
             margin: 0;
             background-color: #f0f9f1;
-            /*background-color: rgb(121, 212, 127);*/
-        }
-        #cardeins{
-            margin-top: 2%;
-            width: 80%;
-
-        }
-        h2{
-            text-align: center;
-            font-size: 200%;
-            background-color: rgb(255, 243, 79) !important;
-            margin-top: 0%;
         }
         #first_img{
             min-width: 100%;
@@ -55,30 +43,30 @@
             min-width: 40%;
             display: flex;
             flex-direction: column;
-            border-radius: 5px 5px 5px 5px;
+            border-radius: 5px;
         }
         .row{
             display: flex;
             flex-direction: row;
             justify-content: center;
+            flex-wrap: wrap;
         }
         .card-header{
             background-color: rgb(255, 243, 79);
             margin-top: 0;
             margin-bottom: 0;
             text-align: center;
-            padding: 1%;
+            padding: 1rem; /* Using rem for padding */
             border-bottom: solid gray 1px;
-            border-radius: 5px 5px 0px 0px;
-
+            border-radius: 5px 5px 0 0;
         }
         .card-body{
             margin-top: 0;
             margin-bottom: 0;
             background-color: #f8f9fa;
-            padding: 1%;
+            padding: 1rem; /* Using rem for padding */
             flex-grow: 1;
-            border-radius: 0px 0px 5px 5px;
+            border-radius: 0 0 5px 5px;
         }
         #aim-list{
             background-color: #f8f9fa;
@@ -86,11 +74,52 @@
         li{
             margin-top: 5%;
         }
+        .scroll-container{
+            max-height: 35vh; 
+            overflow-y: auto;
+            white-space: nowrap;
+            padding: 10px;
+            border-radius: 0 0 5px 5px; 
+            background-color: #f8f9fa;
+        }
+        .scroll-container img {
+            padding: 1rem;
+            max-height: 30vh; 
+            width: auto; 
+        }
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column; 
+                align-items: center;
+            }
+
+            .card {
+                max-width: 90%; 
+                min-width: 90%; 
+            }
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        footer{
+            text-align: center;
+            background-color: rgb(255, 243, 79);
+            bottom: 0;
+            padding: 0;
+            margin-bottom: 2;
+            margin-left: 2%;
+            margin-right: 2%;
+            border-radius: 5px;
+        }
+        #footer-text{
+            padding: 1%;
+        }
     </style>
 </head>
 <body>
     <h1 class="dm-sans">Eternal Perspective Foundation</h1>
-    <img id="first_img" src="img/first_img.jpg">
+    <img id="first_img" src="img/first_img.jpg" alt="First Image">
     <div class="row">
         <div class="card">
             <h3 class="card-header dm-sans">Background and Context</h3>
@@ -128,8 +157,50 @@
             </div>
         </div>
         <div class="card">
-            <img src="img/img2.jpg" class="card-img">
+            <img src="img/img2.jpg" class="card-img" alt="Image 2">
         </div>
     </div>
+    <div class="row">
+        <div class="card">
+            <img src="img/img3.jpg" class="card-img" alt="Image 3">
+        </div>
+        <div class="card">
+            <h3 class="card-header dm-sans">Strategic Priority Areas</h3>
+            <ul class="nanum-gothic-regular" id="aim-list">
+                <li>Access to Justice</li>
+                <li>Responsible Parenting Advocacy</li>
+                <li>Early childhood inclusive education</li>
+                <li>Social Equity and Inclusion</li>
+                <li>Child Protection and Security</li>
+                <li>Psychosocial Support</li>
+                <li>Mental Health Guidance and Counseling</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <h3 class="card-header dm-sans">Contact</h3>
+            <div class="card-body">
+                <p>Phone: 11111111</p>
+            </div>
+        </div>
+        <div class="card">
+            <h3 class="card-header dm-sans">Image Gallery</h3>
+            <div class="scroll-container">
+                <img src="img/scroll1.jpg" alt="Image 1">
+                <img src="img/scroll2.jpg" alt="Image 2">
+                <img src="img/scroll3.jpg" alt="Image 3">
+                <img src="img/scroll4.jpg" alt="Image 4">
+                <img src="img/scroll5.jpg" alt="Image 5">
+                <img src="img/scroll6.jpg" alt="Image 6">
+                <img src="img/scroll7.jpg" alt="Image 7">
+                <img src="img/scroll8.jpg" alt="Image 8">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h3 id="footer-text" class="dm-sans">Designed by <a href="https://www.wiicart.net">wiicart</a></h3>
+    </footer>
 </body>
 </html>
+
