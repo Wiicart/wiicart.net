@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPF</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
         .dm-sans{
             font-family: "DM Sans", sans-serif;
             font-optical-sizing: auto;
             font-weight: 800;
+            font-style: normal;
+        }
+        .nanum-gothic-regular{
+            font-family: "Nanum Gothic", sans-serif;
+            font-weight: 400;
             font-style: normal;
         }
         h1{
@@ -24,6 +29,7 @@
         body, h1, h2{
             padding: 0;
             margin: 0;
+            background-color: #f0f9f1;
             /*background-color: rgb(121, 212, 127);*/
         }
         #cardeins{
@@ -44,33 +50,86 @@
         }
         .card{
             margin: 2%;
+            border: 1px solid black;
+            max-width: 40%;
+            min-width: 40%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px 5px 5px 5px;
+        }
+        .row{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .card-header{
+            background-color: rgb(255, 243, 79);
+            margin-top: 0;
+            margin-bottom: 0;
+            text-align: center;
+            padding: 1%;
+            border-bottom: solid gray 1px;
+            border-radius: 5px 5px 0px 0px;
+
+        }
+        .card-body{
+            margin-top: 0;
+            margin-bottom: 0;
+            background-color: #f8f9fa;
+            padding: 1%;
+            flex-grow: 1;
+            border-radius: 0px 0px 5px 5px;
+        }
+        #aim-list{
+            background-color: #f8f9fa;
+        }
+        li{
+            margin-top: 5%;
         }
     </style>
 </head>
 <body>
     <h1 class="dm-sans">Eternal Perspective Foundation</h1>
     <img id="first_img" src="img/first_img.jpg">
-    <h2>Mission: To deliver knowledge and health to the needy.</h2>
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="card">
-            <div class="card-header">
-                Background and Contex
-            </div>
+            <h3 class="card-header dm-sans">Background and Context</h3>
             <div class="card-body">
-                <div class="card-text">EXTERNAL PERSPECTIVE FOUNDATION (EPF) is a non-partisan, non-political, non-religious, and non-profit organization that promotes human rights for the children with special needs. EPF was first established as a nursery school that will initiate nursery education and care to the children who are disabled (physically and mentally) by providing academic, social and health strength to them.
+                <p class="nanum-gothic-regular">
+                    EXTERNAL PERSPECTIVE FOUNDATION (EPF) is a non-partisan, non-political, non-religious, and non-profit organization that promotes human rights for the children with special needs. EPF was first established as a nursery school that will initiate nursery education and care to the children who are disabled (physically and mentally) by providing academic, social and health strength to them.
                     EPF started with a few members who Volunteer willingly to meet the needs of all the children with disability here in Kahama. In 2021, EPF came to realize that community needs to be given awareness that children with disabilities have the same rights and the same needs as other children and they are not entitled to the protection and assistance, but to full participation in society as any other human being. As a result EPF was able to be registered as a non- profit organization with registration number EPF,00NGO/R/3686.
-                    EPF currently addresses issues relating to: inclusive education, stigma, violence and discrimination, inclusive child protection, inclusive social protection and inclusive health and well-being.</div>
+                    EPF currently addresses issues relating to: inclusive education, stigma, violence and discrimination, inclusive child protection, inclusive social protection and inclusive health and well-being.
+                </p>
             </div>
         </div>
         <div class="card">
+            <h3 class="card-header dm-sans">Aims and Objectives</h3>
             <div class="card-body">
-                <div class="card-title">BlahBalh</div>
-                <div class="card-text">BlahBalh egkr nkl wngk;wef;wf; wef;n wekfnk;</div>
-            </div>
+                <ul class="nanum-gothic-regular" id="aim-list">
+                    <li>To advocate rights and justice for children with disabilities and special needs</li>
+                    <li>To raise awareness and share information about children with disabilities and special needs</li>
+                    <li>To promote nursery and primary education of children with disabilities and special needs</li>        
+                </ul>
+            </div>      
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <div class="row">
+        <div class="card">
+            <h3 class="card-header dm-sans">Values</h3>
+            <div class="card-body">
+                <ul class="nanum-gothic-regular" id="aim-list">
+                    <li>Accountability and Transparency</li>
+                    <li>Commitment and Integrity</li>
+                    <li>Inclusion and Transparency</li>
+                    <li>Partnership and Volunteerism</li>
+                    <li>Dignity</li>
+                    <li>Equality</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/img2.jpg" class="card-img">
+        </div>
+    </div>
 </body>
 </html>
