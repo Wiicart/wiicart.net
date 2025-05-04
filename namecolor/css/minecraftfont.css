@@ -166,3 +166,7 @@ th {
 .italic {
     font-style: italic;
 }
+
+.shadow {
+    text-shadow: 3px 3px #FFFFFF;
+}

@@ -1,43 +1,31 @@
 document.getElementById("bold-button").onclick = function() {
-    let nameInput = document.getElementById("nameInput");
-    let currentValue = nameInput.value;
-    nameInput.value = currentValue + "&l";
+    insertAtCursor("&l");
     update();
 };
 
 document.getElementById("italic-button").onclick = function() {
-    let nameInput = document.getElementById("nameInput");
-    let currentValue = nameInput.value;
-    nameInput.value = currentValue + "&o";
+    insertAtCursor("&o");
     update();
 };
 
 document.getElementById("underline-button").onclick = function() {
-    let nameInput = document.getElementById("nameInput");
-    let currentValue = nameInput.value;
-    nameInput.value = currentValue + "&n";
+    insertAtCursor("&n");
     update();
 };
 
 document.getElementById("strike-button").onclick = function() {
-    let nameInput = document.getElementById("nameInput");
-    let currentValue = nameInput.value;
-    nameInput.value = currentValue + "&m";
+    insertAtCursor("&m");
     update();
 };
 
 document.getElementById("reset-button").onclick = function() {
-    let nameInput = document.getElementById("nameInput");
-    let currentValue = nameInput.value;
-    nameInput.value = currentValue + "&r";
+    insertAtCursor("&r");
     update();
 };
 
 document.getElementById("color-button").onclick = function() {
-    let nameInput = document.getElementById("nameInput");
-    let currentValue = nameInput.value;
     let color = "&#" + document.getElementById("colorPicker").value.substr(1);
-    nameInput.value = currentValue + color;
+    insertAtCursor(color);
     update();
 };
 
@@ -46,16 +34,51 @@ function update() {
     updateCommand();
 }
 
+function insertAtCursor(text) {
+    const input = document.getElementById("nameInput");
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+    const value = input.value;
+
+    input.value = value.substring(0, start) + text + value.substring(end);
+
+    const newCursorPos = start + text.length;
+    input.selectionStart = input.selectionEnd = newCursorPos;
+
+    input.focus();
+    update();
+}
+
+
 function updateCommand() {
     document.querySelector("#commandText").value = "/nick " + document.getElementById("nameInput").value;
 }
+
+const bukkitColorMap = {
+    '0': '#000000', // black
+    '1': '#0000AA', // dark blue
+    '2': '#00AA00', // dark green
+    '3': '#00AAAA', // dark aqua
+    '4': '#AA0000', // dark red
+    '5': '#AA00AA', // dark purple
+    '6': '#FFAA00', // gold
+    '7': '#AAAAAA', // gray
+    '8': '#555555', // dark gray
+    '9': '#5555FF', // blue
+    'a': '#55FF55', // green
+    'b': '#55FFFF', // aqua
+    'c': '#FF5555', // red
+    'd': '#FF55FF', // light purple
+    'e': '#FFFF55', // yellow
+    'f': '#FFFFFF'  // white
+};
 
 function color() {
     const nameInput = document.getElementById("nameInput").value;
     const outputDiv = document.getElementById("formattedOutput");
 
     console.log("Processing input:", nameInput); // Debug
-    outputDiv.innerHTML = ""; // Clear output
+    outputDiv.innerHTML = " "; // Clear output
 
     let currentText = "";
     let currentStyles = {
@@ -84,6 +107,10 @@ function color() {
             else if (code === "o") currentStyles.italic = true;
             else if (code === "n") currentStyles.underline = true;
             else if (code === "m") currentStyles.strikethrough = true;
+            else if (bukkitColorMap.hasOwnProperty(code)) {
+                currentStyles.color = bukkitColorMap[code];
+                console.log(`Applied Bukkit color: ${currentStyles.color} for code &${code}`);
+            }
             else if (code === "r") {
                 currentStyles = {
                     color: "#ffffff",
@@ -122,8 +149,6 @@ function createStyledSpan(text, styles) {
 
     // Styles for constant size
     span.style.fontFamily = "Minecraftia, serif";
-    span.style.fontSize = "300%";
-    span.style.lineHeight = "5vh"; // Match div height
     span.style.display = "inline-flex"; // Prevent height distortion
     span.style.alignItems = "center"; // Center vertically
 
@@ -137,4 +162,10 @@ function createStyledSpan(text, styles) {
     if (styles.strikethrough) span.classList.add("strikethrough");
 
     return span;
+}
+
+function copy() {
+    let element = document.getElementById("commandText");
+    const toCopy = element.value;
+    navigator.clipboard.writeText(toCopy);
 }

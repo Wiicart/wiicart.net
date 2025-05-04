@@ -108,8 +108,15 @@
                 <p class="card-text">Build your /nick command!</p>
                 <p class="card-text">Click on the styles and colors that you want, then type your text.</p>
                 <p class="card-text">To make the styles that you've already added stop, click on the "x" symbol.</p>
+                <label for="formattedOutput">Display Name:</label>
+                <br/>
+                <div id="formattedOutput" class="form-control" style="font-family: Minecraftia, serif; min-height: 8vh; font-size: 6vh;">
+                    &nbsp;
+                </div>
+                <br/>
+                <br/>
                 <div class="btn-toolbar" role="toolbar" aria-label="Text styles">
-                    <div class="btn-group mr-2" role="group" aria-label="syling">
+                    <div class="btn-group mr-2" role="group" aria-label="styling">
                         <button type="button" id="color-button" class="btn btn-light white-icon"><i class="bi bi-brush"></i></button>
                         <button type="button" id="bold-button" class="btn btn-light white-icon"><i class="bi bi-type-bold h6"></i></button>
                         <button type="button" id="italic-button" class="btn btn-light white-icon"><i class="bi bi-type-italic h6"></i></button>
@@ -118,17 +125,13 @@
                         <button type="button" id="reset-button" class="btn btn-light white-icon"><i class="bi bi-x-octagon h6"></i></button>
                     </div>
                     <div class="btn-group btn-group2 mr-2" role="group" aria-label="color picker">
-                        <input type="color" class="form-control form-control-color textC" id="colorPicker" value="#FF0000" title="Text Color" style="border-radius: 0; background-color: transparent;">
+                        <input type="color" class="form-control form-control-color textC" id="colorPicker" value="#FF0000" title="Text Color" style="border-radius: 0; background-color: transparent; width: 5vh; height: 5vh;">
                     </div>
                 </div>
                 <label for="nameInput">Name Input:</label>
                 <input type="text" class="form-control" id="nameInput" placeholder="Name" style="margin-bottom: 2%;" onChange="update()">
                 <label for="commandText">Command:</label>
-                <input class="form-control" type="text" id="commandText" placeholder="&nbsp;" style="margin-bottom: 2%;" readonly>
-                <label for="formattedOutput">Display Name:</label>
-                <div id="formattedOutput" class="form-control" style="font-family: Minecraftia, serif; min-height: 5vh;">
-                    &nbsp;
-                </div>
+                <input class="form-control" type="text" id="commandText" placeholder="&nbsp;" style="margin-bottom: 2%;" readonly onclick="copy()">
             </div>
         </div>
     </div>
@@ -143,7 +146,6 @@
         <h3 style="color:white; font-size: 100%;">ⓒ wiicart 2024</h3>
     </footer>
     <script type="text/javascript" src="js/commandbuilder.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7790652961596262" crossOrigin="anonymous"></script>
 </body>
 </html>
 
